@@ -1,4 +1,6 @@
 var qtd = 2;
+var nota = 0;
+var aluno;
 function Verify(){
    
        var nota1 = Number(document.getElementByid('aluno-1-nota-1').value); 
@@ -16,7 +18,11 @@ function AddRow(){
     pai = document.getElementsByTagName('tbody');
     linha = document.createElement('tr');
     numero = document.createElement('th');
-    saida = document.createElement('output');
+    saidaMedia = document.createElement('output');
+    saidaMedia.setAttribute('id', "aluno-" + qtd + "-media");
+    saidaResultado = document.createElement('output');
+    saidaMedia.setAttribute('id', "aluno-" + qtd + "-situacao");
+
     media = document.createElement('td');
     resultado = document.createElement('td');
 
@@ -38,12 +44,30 @@ function AddRow(){
 
     dadoNome = document.createElement('td');
     dadoNota1 = document.createElement('td');
+    nota++
+    aluno = "aluno-" + qtd  + "-nota-" + nota;
+    dadoNota1.setAttribute('id', aluno)
+
     dadoNota2 = document.createElement('td');
+    nota++
+    aluno = "aluno-" + qtd  + "-nota-" + nota;
+    dadoNota2.setAttribute('id', aluno)
+
     dadoNota3 = document.createElement('td');
+    nota++
+    aluno = "aluno-" + qtd  + "-nota-" + nota;
+    dadoNota3.setAttribute('id', aluno)
+
     dadoNota4 = document.createElement('td');
+    nota++
+    aluno = "aluno-" + qtd  + "-nota-" + nota;
+    dadoNota4.setAttribute('id', aluno)
+
+    nota = 0;
 
     numero.innerText = qtd;
-
+    nota++
+    aluno = "aluno-" + qtd  + "-nota-" + nota;
     pai[0].appendChild(linha);
     linha.appendChild(numero)
     
@@ -64,8 +88,16 @@ function AddRow(){
 
     linha.appendChild(media);
     linha.appendChild(resultado);
-    media.appendChild(saida);
-    resultado.appendChild(saida);
+    media.appendChild(saidaMedia);
+    resultado.appendChild(saidaResultado);
 
     console.log(pai[0]);
+}
+
+function Verify(){
+    for(y = 1; y <= qtd; y++){
+        for(i = 1; i <= nota; i++){
+            
+        }
+    }
 }
