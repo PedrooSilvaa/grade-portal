@@ -3,6 +3,7 @@ var nota = 4;
 var aluno = 0;
 var somaNotas = 0;
 var media = 0;
+var situacao = "";
 function Verify(){
    
        var nota1 = Number(document.getElementByid('aluno-1-nota-1').value); 
@@ -27,6 +28,7 @@ function AddRow(){
 
     media = document.createElement('td');
     resultado = document.createElement('td');
+    resultado.setAttribute('id', `aluno-${qtd}-td-output`);
 
     entradaNome = document.createElement('input');
     entradaNome.placeholder = 'nome';
@@ -96,8 +98,22 @@ function Verify() {
         }
         media = somaNotas / nota;
         document.getElementById(`aluno-${y}-media`).value = media;
+        
+        if(media >= 70){
+            situacao = "Aprovado"
+            document.getElementById(`aluno-${y}-td-output`).style.backgroundColor = "green";
+            document.getElementById(`aluno-${y}-situacao`).value = situacao;
+        }else if(media > 50 && media < 70) {
+            situacao = "Recuperação"
+            document.getElementById(`aluno-${y}-td-output`).style.backgroundColor = "yellow";
+            document.getElementById(`aluno-${y}-situacao`).value = situacao;
+        }else{
+            situacao = "Reprovado"
+            document.getElementById(`aluno-${y}-td-output`).style.backgroundColor = "red";
+            document.getElementById(`aluno-${y}-situacao`).value = situacao;
+        }
+
         media = 0;
         somaNotas = 0;
     }
-    document.getElementById(`aluno-1-situacao`).style.backgroundColor = "red";
 }
