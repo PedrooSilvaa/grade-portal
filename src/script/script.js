@@ -99,4 +99,5 @@ function Verify() {
         media = 0;
         somaNotas = 0;
     }
+    document.getElementById(`aluno-1-situacao`).style.backgroundColor = "red";
 }
