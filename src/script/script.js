@@ -2,6 +2,7 @@ var qtd = 2;
 var nota = 4;
 var aluno = 0;
 var somaNotas = 0;
+var somaMedia = 0;
 var media = 0;
 var situacao = "";
 var tempNota = 4;
@@ -174,6 +175,7 @@ function AddColumn(){
 }
 
 function Verify() {
+    somaMedia = 0;
     for (y = 1; y <= qtd; y++) {
         for (let i = 1; i <= nota; i++) {
             somaNotas +=  parseInt(document.getElementById(`aluno-${y}-nota-${i}`).value);
@@ -194,8 +196,14 @@ function Verify() {
             document.getElementById(`aluno-${y}-td-output`).style.backgroundColor = "red";
             document.getElementById(`aluno-${y}-situacao`).value = situacao;
         }
-
+        somaMedia += media;
         media = 0;
         somaNotas = 0;
     }
+    somaMedia = somaMedia / qtd; 
+}
+
+function Media(){
+    document.getElementById("saida-media").innerText = somaMedia;
+   
 }

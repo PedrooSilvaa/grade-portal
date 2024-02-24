@@ -1,0 +1,19 @@
+#saida-media{
+    border: 3px solid black;
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.local-botoes, .local-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.local-botoes button {
+    margin: 5px;
+}
