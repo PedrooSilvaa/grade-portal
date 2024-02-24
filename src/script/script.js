@@ -1,6 +1,8 @@
 var qtd = 2;
-var nota = 0;
-var aluno;
+var nota = 4;
+var aluno = 0;
+var somaNotas = 0;
+var media = 0;
 function Verify(){
    
        var nota1 = Number(document.getElementByid('aluno-1-nota-1').value); 
@@ -29,7 +31,7 @@ function AddRow(){
     entradaNome = document.createElement('input');
     entradaNome.placeholder = 'nome';
     entradaNome.setAttribute('class', 'form-control');
-
+    nota = 0;
     entradaN1 = document.createElement('input');
     entradaN1.setAttribute('class', 'form-control');
     nota++;
@@ -59,13 +61,8 @@ function AddRow(){
     dadoNota2 = document.createElement('td');
     dadoNota3 = document.createElement('td');
     dadoNota4 = document.createElement('td');
-   
-
-    nota = 0;
 
     numero.innerText = qtd;
-    nota++
-    aluno = "aluno-" + qtd  + "-nota-" + nota;
     pai[0].appendChild(linha);
     linha.appendChild(numero)
     
@@ -92,15 +89,14 @@ function AddRow(){
     console.log(pai[0]);
 }
 
-function Verify(){
-    console.log("verificador" + qtd + " ");
-
-    for(y = 0; y <= qtd; y++){
-        for(i = 0   ; i <= nota; i++){
-            var notas = document.getElementById("aluno-" + y + "-nota-" + i).value;
-            media = notas / i;
-            document.getElementById("aluno-" + y + "-media").innerText = media;
-            console.log(media + nota )
+function Verify() {
+    for (y = 1; y <= qtd; y++) {
+        for (let i = 1; i <= nota; i++) {
+            somaNotas +=  parseInt(document.getElementById(`aluno-${y}-nota-${i}`).value);
         }
+        media = somaNotas / nota;
+        document.getElementById(`aluno-${y}-media`).value = media;
+        media = 0;
+        somaNotas = 0;
     }
 }
