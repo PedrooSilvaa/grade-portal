@@ -21,7 +21,7 @@ function AddRow(){
     saidaMedia = document.createElement('output');
     saidaMedia.setAttribute('id', "aluno-" + qtd + "-media");
     saidaResultado = document.createElement('output');
-    saidaMedia.setAttribute('id', "aluno-" + qtd + "-situacao");
+    saidaResultado.setAttribute('id', "aluno-" + qtd + "-situacao");
 
     media = document.createElement('td');
     resultado = document.createElement('td');
@@ -32,36 +32,34 @@ function AddRow(){
 
     entradaN1 = document.createElement('input');
     entradaN1.setAttribute('class', 'form-control');
+    nota++;
+    aluno = "aluno-" + qtd  + "-nota-" + nota;
+    entradaN1.setAttribute('id', aluno)
 
     entradaN2 = document.createElement('input');
     entradaN2.setAttribute('class', 'form-control');
+    nota++;
+    aluno = "aluno-" + qtd  + "-nota-" + nota;
+    entradaN2.setAttribute('id', aluno)
 
     entradaN3 = document.createElement('input');
     entradaN3.setAttribute('class', 'form-control');
+    nota++;
+    aluno = "aluno-" + qtd  + "-nota-" + nota;
+    entradaN3.setAttribute('id', aluno)
 
     entradaN4 = document.createElement('input');
     entradaN4.setAttribute('class', 'form-control');
+    nota++;
+    aluno = "aluno-" + qtd  + "-nota-" + nota;
+    entradaN4.setAttribute('id', aluno)
 
     dadoNome = document.createElement('td');
     dadoNota1 = document.createElement('td');
-    nota++
-    aluno = "aluno-" + qtd  + "-nota-" + nota;
-    dadoNota1.setAttribute('id', aluno)
-
     dadoNota2 = document.createElement('td');
-    nota++
-    aluno = "aluno-" + qtd  + "-nota-" + nota;
-    dadoNota2.setAttribute('id', aluno)
-
     dadoNota3 = document.createElement('td');
-    nota++
-    aluno = "aluno-" + qtd  + "-nota-" + nota;
-    dadoNota3.setAttribute('id', aluno)
-
     dadoNota4 = document.createElement('td');
-    nota++
-    aluno = "aluno-" + qtd  + "-nota-" + nota;
-    dadoNota4.setAttribute('id', aluno)
+   
 
     nota = 0;
 
@@ -95,9 +93,14 @@ function AddRow(){
 }
 
 function Verify(){
-    for(y = 1; y <= qtd; y++){
-        for(i = 1; i <= nota; i++){
-            
+    console.log("verificador" + qtd + " ");
+
+    for(y = 0; y <= qtd; y++){
+        for(i = 0   ; i <= nota; i++){
+            var notas = document.getElementById("aluno-" + y + "-nota-" + i).value;
+            media = notas / i;
+            document.getElementById("aluno-" + y + "-media").innerText = media;
+            console.log(media + nota )
         }
     }
 }
