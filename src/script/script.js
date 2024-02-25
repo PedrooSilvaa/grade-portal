@@ -6,17 +6,15 @@ var somaMedia = 0;
 var media = 0;
 var situacao = "";
 var tempNota = 4;
-function Verify(){
-   
-       var nota1 = Number(document.getElementByid('aluno-1-nota-1').value); 
-       var nota2 = Number(document.getElementByid('aluno-1-nota-2').value); 
-       var nota3 = Number(document.getElementByid('aluno-1-nota-3').value); 
-       var nota4 = Number(document.getElementByid('aluno-1-nota-4').value);
-       var notaTotal = 0;
-       notaTotal = nota1 + nota2 + nota3 + nota4;
-       alert(notaTotal) 
-   
-}
+var tempNome = "";
+var tempNota1 = 0;
+var tempNota2 = 0;
+var tempNota3 = 0;
+var tempNota4 = 0;
+var tempNota5 = 0;
+var tempNota6 = 0;
+var tempMedia = 0;
+var nome = "";
 
 function AddRow(){
     if(qtd < 10){
@@ -78,6 +76,7 @@ function AddRow(){
         linha.appendChild(numero);
         
         dadoNome.appendChild(entradaNome);
+        entradaNome.setAttribute('id', `aluno-${qtd}-nome`);
         linha.appendChild(dadoNome);
         
         dadoNota1.appendChild(entradaN1);
@@ -207,3 +206,84 @@ function Media(){
     document.getElementById("saida-media").innerText = somaMedia;
    
 }
+
+function Growing(qtd) {
+    for (let p =  1; p <= qtd; p++) {
+        for (let y =  2; y <= qtd; y++) {
+            // Obter os IDs dos elementos de origem e destino
+            var idOrigemNome = `aluno-${p}-nome`;
+            var idDestinoNome = `aluno-${y}-nome`;
+            var idOrigemMedia = `aluno-${p}-media`;
+            var idDestinoMedia = `aluno-${y}-media`;
+
+            // Obter os valores dos elementos de origem e destino
+            var nomeOrigem = document.getElementById(idOrigemNome).value;
+            var nomeDestino = document.getElementById(idDestinoNome).value;
+            var mediaOrigem = parseFloat(document.getElementById(idOrigemMedia).value);
+            var mediaDestino = parseFloat(document.getElementById(idDestinoMedia).value);
+
+            // Comparar as médias e trocar os valores se necessário
+            if (mediaOrigem < mediaDestino) {
+                // Trocar valores de nome
+                document.getElementById(idOrigemNome).value = nomeDestino;
+                document.getElementById(idDestinoNome).value = nomeOrigem;
+
+                // Trocar valores de notas e média
+                for (let nota =  1; nota <=  4; nota++) {
+                    var idOrigemNota = `aluno-${p}-nota-${nota}`;
+                    var idDestinoNota = `aluno-${y}-nota-${nota}`;
+
+                    var notaOrigem = parseFloat(document.getElementById(idOrigemNota).value);
+                    var notaDestino = parseFloat(document.getElementById(idDestinoNota).value);
+
+                    document.getElementById(idOrigemNota).value = notaDestino;
+                    document.getElementById(idDestinoNota).value = notaOrigem;
+                }
+
+                // Trocar valor da média
+                document.getElementById(idOrigemMedia).value = mediaDestino;
+                document.getElementById(idDestinoMedia).value = mediaOrigem;
+            }
+        }
+    }
+}
+
+
+// function Growing(){
+//     console.log(qtd)
+//     for(p = 1; p <=  qtd; p++){
+//         for(y = 2; y <= qtd; y++){
+//             var idOrigem = `aluno-${p}-nome`;
+//             var idDestino = `aluno-${y}-nome`;
+
+//             if(`aluno-${p}-media` < `aluno${y}-media`){
+//                 tempNome = document.getElementById(`aluno-${p}-nome`).value;
+//                 tempNota1 = parseInt(document.getElementById(`aluno-${p}-nota-1`).value);
+//                 tempNota2 = parseInt(document.getElementById(`aluno-${p}-nota-2`).value);
+//                 tempNota3 = parseInt(document.getElementById(`aluno-${p}-nota-3`).value);
+//                 tempNota4 = parseInt(document.getElementById(`aluno-${p}-nota-4`).value);
+//                 tempMedia = parseInt(document.getElementById(`aluno-${p}-media`).value);
+
+//                 console.log("temp" + tempNome);
+//                 console.log("parte" + tempNota1);
+//                 console.log("parte" + tempNota2);
+//                 console.log("parte" + tempNota3);
+//                 console.log("parte" + tempNota4);
+                
+//                 document.getElementById(idDestino).innerText = idOrigem;
+//                 document.getElementById(`aluno-${p}-nota-1`).innerText = `aluno-${y}-nota-1`;
+//                 document.getElementById(`aluno-${p}-nota-2`).innerText = `aluno-${y}-nota-2`;
+//                 document.getElementById(`aluno-${p}-nota-3`).innerText = `aluno-${y}-nota-3`;
+//                 document.getElementById(`aluno-${p}-nota-4`).innerText = `aluno-${y}-nota-4`;
+//                 document.getElementById(`aluno-${p}-nota-media`).value = `aluno-${y}-media`;
+
+//                 document.getElementById(idOrigem).value = tempNome;
+//                 document.getElementById(`aluno-${y}-nota-1`).value = tempNota1;
+//                 document.getElementById(`aluno-${y}-nota-2`).value = tempNota2;
+//                 document.getElementById(`aluno-${y}-nota-3`).value = tempNota3;
+//                 document.getElementById(`aluno-${y}-nota-4`).value = tempNota4;
+//                 document.getElementById(`aluno-${y}-nota-media`).value = tempMedia;
+//             }
+//         }    
+//     }
+// }
