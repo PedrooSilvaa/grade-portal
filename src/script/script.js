@@ -27,6 +27,8 @@ function AddRow(){
         saidaResultado = document.createElement('output');
         saidaResultado.setAttribute('id', "aluno-" + qtd + "-situacao");
 
+        linha.setAttribute('id', `aluno-${qtd}`)
+
         media = document.createElement('td');
         resultado = document.createElement('td');
         resultado.setAttribute('id', `aluno-${qtd}-td-output`);
@@ -122,9 +124,6 @@ function AddRow(){
         console.log("adicionar linha" + nota);
 
         console.log("antes " + tempNota)
-
-
-        
     }else{
         alert("Quantidade de alunos esgotada!!");
     }
@@ -207,83 +206,8 @@ function Media(){
    
 }
 
-function Growing(qtd) {
-    for (let p =  1; p <= qtd; p++) {
-        for (let y =  2; y <= qtd; y++) {
-            // Obter os IDs dos elementos de origem e destino
-            var idOrigemNome = `aluno-${p}-nome`;
-            var idDestinoNome = `aluno-${y}-nome`;
-            var idOrigemMedia = `aluno-${p}-media`;
-            var idDestinoMedia = `aluno-${y}-media`;
-
-            // Obter os valores dos elementos de origem e destino
-            var nomeOrigem = document.getElementById(idOrigemNome).value;
-            var nomeDestino = document.getElementById(idDestinoNome).value;
-            var mediaOrigem = parseFloat(document.getElementById(idOrigemMedia).value);
-            var mediaDestino = parseFloat(document.getElementById(idDestinoMedia).value);
-
-            // Comparar as médias e trocar os valores se necessário
-            if (mediaOrigem < mediaDestino) {
-                // Trocar valores de nome
-                document.getElementById(idOrigemNome).value = nomeDestino;
-                document.getElementById(idDestinoNome).value = nomeOrigem;
-
-                // Trocar valores de notas e média
-                for (let nota =  1; nota <=  4; nota++) {
-                    var idOrigemNota = `aluno-${p}-nota-${nota}`;
-                    var idDestinoNota = `aluno-${y}-nota-${nota}`;
-
-                    var notaOrigem = parseFloat(document.getElementById(idOrigemNota).value);
-                    var notaDestino = parseFloat(document.getElementById(idDestinoNota).value);
-
-                    document.getElementById(idOrigemNota).value = notaDestino;
-                    document.getElementById(idDestinoNota).value = notaOrigem;
-                }
-
-                // Trocar valor da média
-                document.getElementById(idOrigemMedia).value = mediaDestino;
-                document.getElementById(idDestinoMedia).value = mediaOrigem;
-            }
-        }
-    }
+function Remove(){
+    var trLinha = document.getElementById(`aluno-${qtd}`);
+    trLinha.remove();
+    qtd--;
 }
-
-
-// function Growing(){
-//     console.log(qtd)
-//     for(p = 1; p <=  qtd; p++){
-//         for(y = 2; y <= qtd; y++){
-//             var idOrigem = `aluno-${p}-nome`;
-//             var idDestino = `aluno-${y}-nome`;
-
-//             if(`aluno-${p}-media` < `aluno${y}-media`){
-//                 tempNome = document.getElementById(`aluno-${p}-nome`).value;
-//                 tempNota1 = parseInt(document.getElementById(`aluno-${p}-nota-1`).value);
-//                 tempNota2 = parseInt(document.getElementById(`aluno-${p}-nota-2`).value);
-//                 tempNota3 = parseInt(document.getElementById(`aluno-${p}-nota-3`).value);
-//                 tempNota4 = parseInt(document.getElementById(`aluno-${p}-nota-4`).value);
-//                 tempMedia = parseInt(document.getElementById(`aluno-${p}-media`).value);
-
-//                 console.log("temp" + tempNome);
-//                 console.log("parte" + tempNota1);
-//                 console.log("parte" + tempNota2);
-//                 console.log("parte" + tempNota3);
-//                 console.log("parte" + tempNota4);
-                
-//                 document.getElementById(idDestino).innerText = idOrigem;
-//                 document.getElementById(`aluno-${p}-nota-1`).innerText = `aluno-${y}-nota-1`;
-//                 document.getElementById(`aluno-${p}-nota-2`).innerText = `aluno-${y}-nota-2`;
-//                 document.getElementById(`aluno-${p}-nota-3`).innerText = `aluno-${y}-nota-3`;
-//                 document.getElementById(`aluno-${p}-nota-4`).innerText = `aluno-${y}-nota-4`;
-//                 document.getElementById(`aluno-${p}-nota-media`).value = `aluno-${y}-media`;
-
-//                 document.getElementById(idOrigem).value = tempNome;
-//                 document.getElementById(`aluno-${y}-nota-1`).value = tempNota1;
-//                 document.getElementById(`aluno-${y}-nota-2`).value = tempNota2;
-//                 document.getElementById(`aluno-${y}-nota-3`).value = tempNota3;
-//                 document.getElementById(`aluno-${y}-nota-4`).value = tempNota4;
-//                 document.getElementById(`aluno-${y}-nota-media`).value = tempMedia;
-//             }
-//         }    
-//     }
-// }
